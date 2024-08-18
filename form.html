@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+   <form id="FormTag">
+    <input id="name" type="text" placeholder="enter your name"/>
+    <input id="age" type="number" placeholder="enter your age"/>
+    <select id="gender">
+        <option  value=""> Select your gender from below </option>
+        <option vale="male"> Man</option>
+        <option value="female">Women</option>
+    </select>
+    <!--
+    type must be submit and the event in addEventListener must be submit
+    only the input tags are used in formTag
+    -->
+    <input type="submit"/>
+
+   </form>
+   <h3 id="tag"></h3>
+</body>
+</html>
+<script>
+    document.querySelector("#FormTag").addEventListener("submit",myFunction);
+    function myFunction(){
+        //will prevent the form from refreshing by default//stops rerendering the page
+        event.preventDefault();
+        let name=document.querySelector("#name").value;
+        let age=document.querySelector("#age").value;
+        let gender=document.querySelector("#gender").value;
+       document.querySelector("#tag").innerText=name;
+        
+
+    }
+</script>

@@ -1,0 +1,30 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 10px;
+    overflow: hidden;
+    background-color: #0d2209;
+  }
+  
+  li {
+    float: left;
+    border-right: 2px solid rgb(11, 11, 11);
+  }
+  li:last-child{
+    border-right: none;
+
+  }
+  li:first-child{
+   
+    border-right: none;;
+  }
+  li:nth-child(2){
+    margin-left: 70%;
+  }
+  li a{
+    display: block;;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+  }
+ 

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>This is para 1tag </h1>
+    <h2>h2 tag</h2>
+    <p >this is paragraph tag 2</p> 
+    <div>this is div</div>
+    <p >this is paragraph tag 3</p> 
+</body>
+</html>
+<script>
+    let para=document.getElementsByTagName("p");
+    console.log(para);//returns an array of all p tags
+
+    console.log(para[2]);
+    for(let i=0;i<para.length;i++){
+        console.log(para[i]);
+    }
+
+
+</script>
+<!-- 
+document.getElementsByTagName --returns array list with all the elements mentioned by the tag name
+we can retrieve them by index and we can also run a loop against them -->
+

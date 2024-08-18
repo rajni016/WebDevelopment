@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="./Home.css">
+<body>
+    <div id="links" padding="20px">
+        <div><a href="./Home.html">Home</a></div>
+        <div><a href="./Application.HTML">Applied Jobs</a></div>
+        <div><a href="./Bookmarks.html">Bookmarks</a></div>   
+    </div>
+    <div id="input">
+     <form id="form">
+        <input id="name" type="text" placeholder="Enter your Name"/>
+        <input  id="Email" type="text" placeholder="Enter your Email"/>
+        <select id="Role">
+            <option value="Full Stack Developer">FSD</option>
+            <option value="Backend Developer">Backend </option>
+            <option value="FrontEnd Developer">FrontEnd</option>
+        </select>
+        <input id="Salary"type="number" placeholder="Enter your Expected Salary">
+        <input type="Submit"/>
+     </form>
+    </div>
+</body>
+</html>
+<script>
+   document.querySelector("#form").addEventListener("submit",getData);
+
+   function getData(){
+    event.preventDefault();
+
+   let jobArr;
+   if(localStorage.getItem("jobList")!=null){
+        jobArr=JSON.parse(localStorage.getItem("jobList"));
+
+   }
+   else{
+       jobArr=[];
+   }
+    let jobObj={
+        personName:document.querySelector("#name").value,
+        personEmail:document.querySelector("#Email").value,
+        personRole:document.querySelector("#Role").value,
+        personSalary:document.querySelector("#Salary").value
+    }
+
+    jobArr.push(jobObj);
+    
+
+   
+    // let td1=document.createElement("td");
+    // td1.innerText=name;
+    // let td2=document.createElement("td");
+    // td2.innerText=email;
+    // let td3=document.createElement("td");
+    // td3.innerText=role;
+    // let td4=document.createElement("td");
+    // td4.innerText=salary;
+
+    // let tr=document.createElement("tr");
+
+    // tr.append(td1,td2,td3,td4);
+
+    // document.querySelector("tbody").append(tr);
+    
+
+    localStorage.setItem("jobList",JSON.stringify(jobArr));
+    
+     window.location.href="Application.HTML";
+
+   }
+</script>

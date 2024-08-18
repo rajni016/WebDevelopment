@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="h1">This is h1 tag </h1>
+    <h2 class ="class">h2 tag</h2>
+    <p class="class">this is paragraph  </p>
+    <div class="class">this is div</div>
+</body>
+</html>
+<script>
+    let h1=document.getElementById("h1");
+    console.log(h1);
+    let classCollection=document.getElementsByClassName("class");
+    console.log(classCollection[1]);
+    for(let i=0;i<classCollection.length;i++){
+        console.log(classCollection[i]);
+    }
+</script>
+<!-- 
+id name must be unique
+class bname need to be unique
+document.getElementsByClassName --returns array list with all the elements mentioned by the class name 
+we can retrieve them by index and we can also run a loop against them -->

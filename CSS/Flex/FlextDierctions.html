@@ -1,0 +1,101 @@
+<!--
+flex-direction , which defines the direction in which the flex items areplaced in the container.
+flex-direction  can accept one of four values:
+row(default value)
+row-reverse
+
+column
+column-reverse
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+       padding: 10px;
+       background-color: chartreuse;
+       display: flex;
+      
+    }
+    .box>div{
+        padding:30px;
+    }
+    .box>div:nth-child(1){
+        background-color: teal;
+    }
+    .box>div:nth-child(2){
+        background-color: orange;
+    }
+    .box>div:nth-child(3){
+        background-color: rgb(29, 29, 211);
+    }
+
+    .box-1{
+       padding: 10px;
+       background-color: rgb(255, 0, 85);
+       display: flex; 
+       flex-direction:column-reverse; 
+
+      
+
+    }
+    .box-1>div{
+        padding:30px;
+    }
+    .box-1>div:nth-child(1){
+        background-color: rgb(212, 177, 61);
+    }
+    .box-1>div:nth-child(2){
+        background-color: rgb(96, 18, 169);
+    }
+    .box-1>div:nth-child(3){
+        background-color: rgb(35, 101, 4);
+    }
+
+    .box-2{
+       padding: 10px;
+       background-color: rgba(157, 0, 255, 0.729);
+       display: flex;  
+       flex-direction: row-reverse; 
+      
+    }
+    .box-2>div{
+        padding:30px;
+    }
+    .box-2>div:nth-child(1){
+        background-color: rgb(22, 12, 41);
+    }
+    .box-2>div:nth-child(2){
+        background-color: rgb(191, 137, 38);
+    }
+    .box-2>div:nth-child(3){
+        background-color: rgb(29, 211, 59);
+    }
+</style>
+<body>
+     <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+     </div>
+    
+     <div class="box-1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+     </div>
+     <div class="box-2">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+     </div>
+    
+</body>
+</html>

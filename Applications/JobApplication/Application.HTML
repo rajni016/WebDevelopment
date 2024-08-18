@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="./Application.css">
+<body>
+    
+    <div id="links">
+        <div><a href="./Home.html">Home</a></div>
+        <div><a href="./Application.HTML">Applied Jobs</a></div>
+        <div><a href="./Bookmarks.html">Bookmarks</a></div>   
+    </div>
+    <div>
+        <h1><i>
+            <u>Applied Jobs are Shown Below</u>
+        </i></h1>
+    </div>
+    <div class="sort">
+        <select id="sortNames" onchange="filterByName()">
+            <option value="unordered">Order by Name</option>
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+    
+        </select>
+
+        <select id="filterRoles" onChange="filterByRole()">
+            <option value="">Filter By Role</option>
+            <option value="Full Stack Developer">FSD</option>
+            <option value="Backend Developer">Back End</option>
+            <option value="FrontEnd Developer">Front End</option>
+    
+        </select>
+        <select id="sortSalary" onChange="filterBySalary()">
+            <option value="">SortbySalary</option>
+            <option value="LTH">Low to High</option>
+            <option value="HTL">High to low</option>
+    
+        </select>
+
+    </div>
+  
+ 
+    <div>
+        <table>
+            <thead>
+               <tr>
+                  <th>Name</th>
+                  <th>Email</th>
+                  <th>Role</th>
+                  <th>Salary</th>
+                  <th>BookMark</th>
+
+               </tr>
+            </thead>
+            <tbody>
+   <!-- data will be coming from the java script. tr and td tags will be added-->
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>
+<script>
+  let jobArr = JSON.parse(localStorage.getItem("jobList"));
+  let bookMarkArr = JSON.parse(localStorage.getItem("bookmarks")) || [];
+
+  display(jobArr);
+  
+
+  function bookMarkFun(elem) {
+    bookMarkArr.push(elem);
+    localStorage.setItem("bookmarks", JSON.stringify(bookMarkArr));
+  }
+
+function filterByRole(){
+    let selectedValue=document.getElementById("filterRoles").value;
+
+    if(selectedValue!=""){
+        console.log(selectedValue);
+         let filteredArray=jobArr.filter(function(element){
+        return element.personRole===selectedValue;
+    })
+     document.querySelector("tbody").innerHTML="";
+    display(filteredArray);
+    
+
+    }
+    else{
+        console.log(jobArr);
+        display(jobArr);
+    }
+       
+  
+}
+
+function filterByName(){
+    let selectedValue=document.getElementById("sortNames").value;
+    document.querySelector("tbody").innerHTML="";
+   
+    
+
+        if(selectedValue=="asc"){
+        
+            jobArr.sort(function(a,b){
+            let firstValue=a.personName;
+            let secondValue=b.personName;
+            if(firstValue>secondValue){
+                return 1;
+            }
+            if(firstValue<secondValue){
+                return -1;
+            }
+            else{
+                return 0;
+            }
+        })
+     display(jobArr);
+    }
+     if(selectedValue=="desc"){
+       jobArr.sort(function(a,b){
+            let firstValue=a.personName;
+            let secondValue=b.personName;
+            if(firstValue>secondValue){
+                return -1;
+            }
+            if(firstValue<secondValue){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        })
+        display(jobArr);
+    }
+
+    
+   
+
+}
+
+function filterBySalary(){
+
+        let selectedValue=document.querySelector("#sortSalary").value;
+        console.log(selectedValue);
+
+            if(selectedValue==="LTH"){
+            jobArr.sort(function(a,b){
+                return a.personSalary - b.personSalary;
+            })
+
+            display(jobArr)
+            }
+
+            if(selectedValue==="HTL"){
+            jobArr.sort(function(a,b){
+            return b.personSalary - a.personSalary;
+          
+
+            })
+            display(jobArr);
+
+            }
+
+        }
+      
+    
+
+
+  function display(data){
+    document.querySelector("tbody").innerHTML="";
+    data.forEach(function (elem) {
+    let tr = document.createElement("tr");
+
+    let td1 = document.createElement("td");
+    td1.innerText = elem.personName;
+    let td2 = document.createElement("td");
+    td2.innerText = elem.personEmail;
+    let td3 = document.createElement("td");
+    td3.innerText = elem.personRole;
+    let td4 = document.createElement("td");
+    td4.innerText = elem.personSalary;
+    let td5 = document.createElement("td");
+    td5.innerText = "Bookmark";
+    td5.addEventListener("click", function () {
+      bookMarkFun(elem);
+    });
+    td5.setAttribute("class","add");
+
+    tr.append(td1, td2, td3, td4, td5);
+
+    document.querySelector("tbody").append(tr);
+  });
+
+  }
+
+</script>

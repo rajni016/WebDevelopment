@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<link rel="stylesheet" href="./Bookmarks.css">
+<body>
+    <div id="links">
+        <div><a href="./Home.html">Home</a></div>
+        <div><a href="./Application.HTML">Applied Jobs</a></div>
+        <div><a href="./Bookmarks.html">Bookmarks</a></div>   
+    </div>
+   <div>
+    <h1>
+        <i>
+            <u>
+                Book Marked Jobs Shown Below
+           </u>
+        </i>
+    </h1>
+   </div>
+   <div>
+    <table >
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Salary</th>
+                <th >Delete BookMark</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+   </div>
+
+    
+</body>
+</html>
+<script>
+    let bookMarkArr=JSON.parse(localStorage.getItem("bookmarks"));
+
+    bookMarkArr.forEach(function(element,index) {
+        let td1=document.createElement("td");
+        td1.innerHTML=element.personName;
+        let td2=document.createElement("td");
+        td2.innerHTML=element.personEmail;
+        let td3=document.createElement("td");
+        td3.innerHTML=element.personRole;
+        let td4=document.createElement("td");
+        td4.innerHTML=element.personSalary;
+        let td5=document.createElement("td");
+        
+        td5.innerText="Click To Delete"
+        td5.setAttribute("id","delete");
+        td5.addEventListener("click",function(){
+            deleteFun(index);
+        })
+        let tableRow=document.createElement("tr");
+        tableRow.append(td1,td2,td3,td4,td5);
+
+        document.querySelector("tbody").append(tableRow);
+
+    });
+
+    function deleteFun(element,index){
+        //deleting the data from current index and only one element to be deleted
+        bookMarkArr.splice(index,1);
+        //bookmark arr is added to local storage as new arr is created by deleting the element
+        localStorage.setItem("bookmarks",JSON.stringify(bookMarkArr));
+        // refresh the page, so that we get new data from the local storage 
+        window.location.reload();
+    }
+</script>

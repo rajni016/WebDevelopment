@@ -1,0 +1,33 @@
+#links{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;;
+}
+body{
+    background-color: rgb(216, 211, 205);
+}
+h1{
+    text-align: center;
+    margin-top: 100px;
+    color:rgb(21, 0, 255)
+}
+
+table{
+    margin: auto;
+   width:60%;
+   padding: 20px;
+  
+  
+}
+table td, table th{
+    border:10px;
+   background-color:lightcoral;
+   font-size: 20px;
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+   text-align: center;
+
+}
+#delete{
+   color:rgb(232, 46, 130);
+   cursor: pointer;
+}

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="age" type="number" placeholder="Enter your age" value=""/>
+    <button onclick="check()">Click</button>
+    <h2>Your results will be displayed down after clicking submit</h2>
+    <h3 id="out"></h3>
+
+</body>
+</html>
+<script>
+    function check(){
+   let age=document.getElementById("age").value;
+   console.log(age);
+      if(age>=18){
+        document.getElementById("out").innerText="Age greater than or equals to 18, eligible"
+      }
+      if(age<18){
+        document.getElementById("out").innerHTML="Age less than 18, ineligible, please become adult"
+      }
+    }
+   
+
+</script> 

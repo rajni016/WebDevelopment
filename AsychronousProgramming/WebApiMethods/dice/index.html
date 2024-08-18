@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    #member-1, #member-2, #member-3{
+         padding: 20px;
+         font-family: Georgia, 'Times New Roman', Times, serif;
+         font-size: 30px;
+         font-style: oblique;
+         text-align: center;
+    
+    }
+    h2{
+        text-align: center;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        
+    }
+</style>
+<body>
+    <button id="roll" onClick="rollDice()">Roll The Dice</button>
+    <h2></h2>
+    <div id="member-1"></div>
+    <div id="member-2"></div>
+    <div id="member-3"></div>
+
+</body>
+</html>
+<script>
+
+    
+  function rollDice(){
+    let x1=Math.floor(Math.random()*6)+1;
+    let x2=Math.floor(Math.random()*6)+1;
+    let x3=Math.floor(Math.random()*6)+1;
+    console.log(x1,x2,x3);
+        document.querySelector("div").innerHTML="";
+        document.querySelector("h2").innerText="";
+        document.querySelector("#member-1").innerText="Member-A score " + x1;
+        document.querySelector("#member-2").innerText="Member-B score " + x2;
+        document.querySelector("#member-3").innerText="Member-C score " + x3;
+
+    if(x1>x2 && x1>x3){
+        document.querySelector("#member-1").innerText="Member A is the winner with Score " + x1;
+        document.querySelector("#member-1").setAttribute("style","color:green");
+    
+        if(x2>x3){
+            document.querySelector("#member-2").setAttribute("style","color:rgb(243, 243, 10)");
+            document.querySelector("#member-3").setAttribute("style","color:red");
+        }
+        else{
+            document.querySelector("#member-3").setAttribute("style","color:rgb(243, 243, 10)");
+            document.querySelector("#member-2").setAttribute("style","color:red");
+        }
+    }
+    if(x2>x1 && x2>x3){
+        document.querySelector("#member-2").innerText="Member B is the winner with Score " + x2;
+        document.querySelector("#member-2").setAttribute("style","color:green");
+        if(x1>x3){
+            document.querySelector("#member-1").setAttribute("style","color:rgb(243, 243, 10)");
+            document.querySelector("#member-3").setAttribute("style","color:red");
+        }
+        else{
+            document.querySelector("#member-3").setAttribute("style","color:yellow");
+            document.querySelector("#member-1").setAttribute("style","color:red");
+        }
+        
+
+    }
+    if(x3>x1 && x3>x2){
+        document.querySelector("#member-3").innerText="Member c is the winner with Score " + x3;
+        document.querySelector("#member-3").setAttribute("style","color:green");
+        if(x1>x2){
+            document.querySelector("#member-1").setAttribute("style","color:yellow");
+            document.querySelector("#member-2").setAttribute("style","color:red");
+        }
+        else{
+            document.querySelector("#member-2").setAttribute("style","color:yellow");
+            document.querySelector("#member-1").setAttribute("style","color:red");
+        }
+        
+
+    }
+    if(x1==x2==x3||(x1==x2&&x3<x1)||(x1==x3&&x2<x1)||(x2==x3&&x1<x2)){
+        document.querySelector("#member-1").setAttribute("style","color:black");
+        document.querySelector("#member-2").setAttribute("style","color:black");
+        document.querySelector("#member-3").setAttribute("style","color:black");
+
+          document.querySelector("h2").innerText="Cannot choose the winner, please roll the dice again";
+    }
+ 
+  }
+</script>

@@ -1,0 +1,150 @@
+<!--
+flex-wrap--wraps the contenet elements acording the screen size, 
+flex-wrap-reverse--, they climb into the row above.
+Wrapping always occurs from the last item.  wrap-reverse  pushes the last item
+above instead of below:
+
+flex-start ->Setting the value to  flex-start  places the flex items at the beginning of the main
+axis, which is also known as the main start.  flex-start  is the default value in this
+property.
+
+-->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+       padding: 10px;
+       background-color: chartreuse;
+       display: flex;
+       flex-wrap: wrap;
+      
+    }
+    .box>div{
+        padding:30px;
+    }
+    .box>div:nth-child(1){
+        background-color: teal;
+    }
+    .box>div:nth-child(2){
+        background-color: orange;
+    }
+    .box>div:nth-child(3){
+        background-color: rgb(29, 29, 211);
+    }
+    .box > div:nth-child(4) {
+        background-color:teal;
+      }
+      .box > div:nth-child(5) {
+        background-color: orange;
+      }
+      .box > div:nth-child(6) {
+        background-color: rgb(76, 76, 212);
+      }
+      .box > div:nth-child(7) {
+        background-color:teal;
+      }
+      .box > div:nth-child(8) {
+        background-color: orange;
+      }
+      .box > div:nth-child(9) {
+        background-color: rgb(76, 76, 212);
+      }
+
+    .box-1{
+       padding: 10px;
+       background-color: rgb(0, 255, 60);
+       display: flex;
+       flex-wrap:wrap-reverse; 
+
+    }
+    .box-1>div{
+        padding:30px;
+    }
+    .box-1>div:nth-child(1){
+        background-color: rgb(212, 177, 61);
+    }
+    .box-1>div:nth-child(2){
+        background-color: rgb(96, 18, 169);
+    }
+    .box-1>div:nth-child(3){
+        background-color: rgb(35, 101, 4);
+    }
+    .box-1 > div:nth-child(4) {
+        background-color:teal;
+      }
+      .box-1  > div:nth-child(5) {
+        background-color: orange;
+      }
+      .box-1 > div:nth-child(6) {
+        background-color: rgb(76, 76, 212);
+      }
+      .box-1 > div:nth-child(7) {
+        background-color:teal;
+      }
+      .box-1  > div:nth-child(8) {
+        background-color: orange;
+      }
+      .box-1  > div:nth-child(9) {
+        background-color: rgb(76, 76, 212);
+      }
+
+    .box-2{
+       padding: 10px;
+       background-color: rgba(157, 0, 255, 0.729);
+       display: flex;  
+       justify-content: center; 
+      
+    }
+    .box-2>div{
+        padding:30px;
+    }
+    .box-2>div:nth-child(1){
+        background-color: rgb(22, 12, 41);
+    }
+    .box-2>div:nth-child(2){
+        background-color: rgb(191, 137, 38);
+    }
+    .box-2>div:nth-child(3){
+        background-color: rgb(29, 211, 59);
+    }
+</style>
+<body>
+     <div class="box">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+    
+     </div>
+    
+     <div class="box-1">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+     </div>
+     <div class="box-2">
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+     </div>
+    
+</body>
+</html>

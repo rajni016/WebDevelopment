@@ -1,0 +1,4 @@
+The CSS padding properties are used to generate space around an element's content, inside of any defined borders.
+ display: flex;block element is converted in to inline
+ dfault flex direction is row
+ if we want to change it to column--> flex-direction: column

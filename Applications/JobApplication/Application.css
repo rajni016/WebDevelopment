@@ -1,0 +1,41 @@
+#links{
+    display: flex;
+    justify-content: space-around;
+    font-size: 20px;
+}
+body{
+    background-color: rgb(216, 211, 205);
+}
+
+table{
+    width:60%;
+    margin: auto;
+    margin-top:50px
+}
+h1{
+    text-align: center;
+    margin-top:100px;
+    color:rgb(21, 0, 255);
+    
+}
+table td,table th{
+    border:10px;
+    padding:10px;
+    font-size: 20px;
+    background-color:lightcoral;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-radius: 10px;
+    text-align: center;
+    
+
+}
+.add{
+    color:rgb(120, 9, 26);
+    cursor: pointer;
+}
+
+.sort{
+   display: flex;
+   justify-content: flex-end;
+
+}

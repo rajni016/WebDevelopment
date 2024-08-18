@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    div{
+        background-color: teal;
+       
+    }
+</style>
+<body>
+    <div>
+        this is dv, changes color when hoover, chnages cursor
+    </div>
+    <h2>this h2 tag</h2>
+    <h3></h3>
+</body>
+</html>
+<script>
+    let div =document.querySelector("div")
+    div.addEventListener("mouseenter", changeBack);
+    div.addEventListener("mouseleave",mouseLeaves);
+    console.log(document.getElementsByTagName("div"));
+
+    function changeBack(){
+         document.querySelector("div").style.backgroundColor="red";
+         document.querySelector("div").style.cursor="pointer";
+    }
+    function mouseLeaves(){
+        document.querySelector("div").style.backgroundColor="teal";
+       document.querySelector("div").style.cursor="cursor";
+    }
+
+    document.querySelector("h2").addEventListener("dblclick",htag)
+   // console.log(document.getElementsByTagName("h2")[0]);
+
+    function  htag(){
+       // document.getElementsByTagName("h2").innerText="clicked me twice"
+        document.getElementsByTagName("h3")[0].innerText="clicked the h2 tag twice";
+    }
+</script>
+
+<!--
+elementsByTagname, elementsByClassname always returns the array list
+-->

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let btn1=document.createElement("button");
+    btn1.textContent="Primary";//text inside button
+    btn1.style.backgroundColor="blue";
+    btn1.style.color="white";
+
+    let btn2=document.createElement("button");
+    btn2.textContent="Secondary";//text inside button
+    btn2.style.backgroundColor="green";
+    btn2.style.color="white";
+
+    let btn3=document.createElement("button");
+    btn3.textContent="Sucess";//text inside button
+    btn3.style.backgroundColor="pink";
+    btn3.style.color="white";
+
+    document.querySelector("body").append(btn1,btn2,btn3);
+
+
+///creating buttons using array object
+
+  let btnObj=[{textContent:"primary-arr", backgroundColor: "blue",color:"white",margin:"10px"},
+  {textContent:"secondary-arr", backgroundColor: "green",color:"white",margin:"10px"},
+  {textContent:"success-arr", backgroundColor: "pink",color:"white",margin:"10px"}
+  ];
+
+  //map function allows us to perform operation on each element in an array
+  btnObj.map(function(element){
+    let btn=document.createElement("button");
+    btn.textContent=element.textContent;
+    btn.style.backgroundColor=element.backgroundColor;
+    btn.style.color=element.color;
+    btn.style.margin=element.margin;
+  let div=document.createElement("div");
+  div.append(btn);
+    document.querySelector("body").append(div);
+  });
+
+   
+</script>
