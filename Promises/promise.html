@@ -1,0 +1,36 @@
+!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let coin=0;
+    let cart=new Promise((resolve,reject)=>{
+        setTimeout(function (){
+            if(coin==1){
+                resolve(coin);
+            }
+            else{
+                reject("cat part issue");
+            }
+        },5000);
+    });
+    //To access the value in resolve  and reject (we use .then and .catch)
+    cart.then(function(res){
+        console.log(res);
+    }).catch(function(err){
+       console.log(err)
+    })
+    .finally(function(){
+        console.log("Finnaly is executed irrespective of then and catch")
+    })
+
+
+</script>

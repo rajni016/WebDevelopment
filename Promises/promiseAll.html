@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    //Promise is used to handle asynchronous code
+    //.then handles successful vlaue
+    //.catch handles rejected value
+    //Promise.all handles all the promise value, if any one of the promise is rejected the whole state is rejected
+    let Promise1=new Promise((resolve,reject)=>{
+        setTimeout(() => {
+            resolve(200);
+        }, 2000);
+    })
+
+    let Promise2=new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            reject(400);
+        },5000)
+    })
+//taking all promises in array and using 
+    let promArray=[Promise1,Promise2];
+
+    Promise.all(promArray).then((resolvedValue)=>{
+        console.log("succesfull ",resolvedValue);
+    })
+    .catch((errorValue)=>{
+        console.log("unsucessful response", errorValue,"not found")
+    })
+</script>
