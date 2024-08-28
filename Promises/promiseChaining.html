@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+    let promise1=new Promise(function(resolve, reject){
+        resolve(1);
+    })
+
+    promise1.then((a)=>{
+        alert(a);
+        return a * 2//default resolve
+        //this return status creates another new promise
+    })
+    .then((b)=>{
+        alert(b);//2
+        return b*2//new promise
+    })
+    //return statement will create a new promise, for that new promise we are using .then
+    .then(function(res){
+        alert(res);//4
+    })
+    //single catch will handle all the mutiple promise chaing methods
+    .catch((error)=>{
+        console.log(error);
+    })
+</script>
