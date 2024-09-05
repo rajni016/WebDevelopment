@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+</html>
+<script>
+
+    function internationalStudent(){
+        this.sayHi=function  () {
+            console.log("Saying Hi");
+        }
+    }
+
+    internationalStudent.prototype.country="United States";
+    internationalStudent.prototype.role="Developer";
+
+    function Student(firstName, lastName){
+        this.studentFirstName=firstName;
+        this.studentLastNamelastName;
+    }
+//we are connecting International Proto type to Student Protype using Object.setPrototypeOf
+    Object.setPrototypeOf(Student.prototype,internationalStudent.prototype);
+//we can access Student prototype as well as InernationalStudent Proto Type
+
+    let student1=new Student("John","Nick");
+
+    console.log(student1);
+
+</script>

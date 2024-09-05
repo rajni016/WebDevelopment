@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input id="input" type="text"/>
+</body>
+</html>
+
+<script>
+ const throttle = (func, delay) => {
+    let prev = 0; //4000
+
+    return function (arg) {
+      let now = new Date().getTime(); // present time in milli seconds
+
+      if (now - prev > delay) {
+        //4000- 0 >2000
+        prev = now; //prev= 4000
+
+        return func(arg);
+      }
+    };
+  };
+
+  function FetchingData(query) {
+    console.log(`process data ${query}`);
+  }
+
+  let throttledSearchData = throttle(FetchingData, 5000);
+
+  let input = document.querySelector("#input");
+
+  input.addEventListener("keyup", function (e) {
+    let query = e.target.value;
+    throttledSearchData(e.target.value); // it should not trigger continue;
+    //
+  });
+</script>

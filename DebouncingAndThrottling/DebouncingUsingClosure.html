@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" oninput="onSearchFunction()"/>
+</body>
+</html>
+<script>
+     function debounce(func,delay){
+        let timeoutId;
+
+        //closure concept is ued here, as we are accessing func,delay,timeoutiD from the outer function to inner function 
+        return function(arg){//arg==typed value in input box
+            clearTimeout(timeoutId);//set Tiemout always gives unique timeoUtid,clears
+            timeoutId=setTimeout(()=>{
+                func(arg);//this will execute after delay time is ended
+            },delay)
+        }
+     }
+     function FetchData(query){
+        console.log(`Processing Search query" ${query}`);
+     }
+    const debouncingProcessSearchQuery= debounce(FetchData,2000);
+
+    ///storing the input text typed in the input box
+    function onSearchFunction(){
+        const query=event.target.value;
+        debouncingProcessSearchQuery(query);//abc
+    }
+
+    //flow
+
+    //typed a value stored in query triggers onSearchFunction();
+    //calls debouncingProcessSearchQuery(query) which is created because of debounce(func,delay) is triggered
+    //calls func(arg)--which is fetchData fucntion(query) which is returned function with arg
+
+    
+</script>
+
