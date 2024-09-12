@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Youtube</h1>
+    <input  type="text" id="search"/>
+    <button onclick="searchVideo()">Search Here</button>
+    <div id="result"></div>
+</body>
+</html>
+<script>
+    let API_KEY="AIzaSyBD4bP7cpYLsdv8dSSr4_SdZ5MMAGf13Ds"
+   
+   let result_div=document.getElementById("result");
+    let searchVideo= async()=>{
+        try{
+            let input=document.getElementById("search").value;
+
+        let response= await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&q=${input}&type=video&maxResults=20&key=${API_KEY}`);
+            let data=await response.json();
+            appendingToDom(data.items);
+        //    console.log(data.items);
+        }
+        catch(error){
+            console.log(error);
+        }
+    }
+
+ function appendingToDom(data){
+     data.forEach(element => {
+         let video=element.snippet.thumbnails.high.url;
+         let title=element.snippet.title;
+         let videoId=element.id.videoId;
+         
+        let div=document.createElement("div");
+        let image=document.createElement("img");
+        let h4tag=document.createElement("h4");
+        h4tag.innerText=title;
+        image.src=video;
+        div.append(image,h4tag);
+        result_div.append(div);
+        div.onclick=()=>{
+            showVideo(videoId);
+        }
+
+        
+     });
+ }
+
+
+function showVideo(data){
+    localStorage.setItem("video_clicked", JSON.stringify(data));
+    window.location.href="newWindow.html";
+}
+</script>
