@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Sign In</h1>
+    <form>
+        <div>
+            <div>
+                <label for="" >Email</label>
+                <input type="text" name="login_email" placeholder="Enter your email" id="login_email"/>
+            </div>
+            <div>
+                <label for="">Password</label>
+                <input type="password" name="password" id="password"  autocomplete="on"/>
+            </div>
+            <button type="button" id="login" >
+               Sign in
+            </button>
+        </div>
+       
+    </form>
+</body>
+</html>
+
+<script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+    
+    
+    import { getAuth, signInWithEmailAndPassword } 
+    from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+  
+    import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
+  
+    // Your web app's Firebase configuration
+   
+    const firebaseConfig = {
+      apiKey: "AIzaSyArlF9XJ4JOXd5yOqTWj98JVCKgLPiznEo",
+      authDomain: "web-authentication-4b57e.firebaseapp.com",
+      projectId: "web-authentication-4b57e",
+      storageBucket: "web-authentication-4b57e.appspot.com",
+      messagingSenderId: "815736081182",
+      appId: "1:815736081182:web:ffe6c2d7dbc54ed739570f",
+      measurementId: "G-2VE0LQJW9W"
+    };
+  
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+  //new registration code
+
+  document.getElementById("login").addEventListener("click",function(){
+    let email=document.getElementById('login_email').value;
+    let password=document.getElementById("password").value;
+    const auth = getAuth(app);
+    const db = getDatabase();
+signInWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed in 
+    const user = userCredential.user;
+    const user_ref = ref(db, 'users/' + user.uid);
+onValue(user_ref, (snapshot) => {
+  const data = snapshot.val();
+   console.log(data);
+});
+alert("login successful")
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    alert(errorMessage);
+  });
+  
+
+  })
+
+
+ </script> 

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up Page</title>
+</head>
+<body>
+    <form>
+        <div>
+            <input type="text" placeholder="name" id="Name"/>
+            <div>
+                <label >Email</label>
+                <input type="text" name="Email" placeholder="Enter your email" id="email"/>
+            </div>
+            <div>
+                <label >Password</label>
+                <input type="password" name="password" id="password"  autocomplete="on"/>
+            </div>
+            <button type="button" id="register" name="Register">
+               Register
+            </button>
+        </div>
+       
+    </form>
+  
+    <a href="./Signin.html">Sign in</a>
+</body>
+</html>
+
+    <script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-app.js";
+  
+  
+  import { getAuth, createUserWithEmailAndPassword } 
+  from "https://www.gstatic.com/firebasejs/10.13.2/firebase-auth.js";
+
+  import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.13.2/firebase-database.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Your web app's Firebase configuration
+ 
+  const firebaseConfig = {
+    apiKey: "AIzaSyArlF9XJ4JOXd5yOqTWj98JVCKgLPiznEo",
+    authDomain: "web-authentication-4b57e.firebaseapp.com",
+    projectId: "web-authentication-4b57e",
+    storageBucket: "web-authentication-4b57e.appspot.com",
+    messagingSenderId: "815736081182",
+    appId: "1:815736081182:web:ffe6c2d7dbc54ed739570f",
+    measurementId: "G-2VE0LQJW9W"
+  };
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+//new registration code
+document.getElementById("register").addEventListener("click",function(){
+    let email=document.getElementById("email").value;
+  let password=document.getElementById("password").value;
+  let userName=document.getElementById("Name").value;
+
+const auth = getAuth(app);
+createUserWithEmailAndPassword(auth, email, password)
+  .then((userCredential) => {
+    // Signed up 
+    const user = userCredential.user;
+    const db = getDatabase();
+    set(ref(db, 'users/' + user.uid), {
+    password:password,
+    email: email,
+    name:userName
+  });
+  alert("registered succesfully");
+  console.log(user);
+    // ...
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+})
+
+ 
+
+</script>
